@@ -79,3 +79,18 @@ extension UIPanGestureRecognizer {
         return CGPoint(x: x, y: y)
     }
 }
+
+// MARK: -
+
+private var tableShouldPerformUIOperationsKey: Void?
+
+public extension UITableView {
+    public var shouldPerformUIOperations: Bool {
+        get {
+            return objc_getAssociatedObject(self, &tableShouldPerformUIOperationsKey) as? Bool ?? false
+        }
+        set {
+            objc_setAssociatedObject(self, &tableShouldPerformUIOperationsKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
