@@ -393,7 +393,9 @@ extension SwipeController: SwipeActionsViewDelegate {
         guard let indexPath = swipeable?.indexPath else { return }
 
         if hide {
-            hideSwipe(animated: true)
+            hideSwipe(animated: true) { _ in
+                action.hideCompletion?(indexPath)
+            }
         }
 
         action.handler?(action, indexPath)
