@@ -82,15 +82,15 @@ extension UIPanGestureRecognizer {
 
 // MARK: -
 
-private var tableShouldPerformUIOperationsKey: Void?
+private var tableShouldPreventUIOperationsKey: Void?
 
 public extension UITableView {
-    public var shouldPerformUIOperations: Bool {
+    public var shouldPreventUIOperations: Bool {
         get {
-            return objc_getAssociatedObject(self, &tableShouldPerformUIOperationsKey) as? Bool ?? false
+            return objc_getAssociatedObject(self, &tableShouldPreventUIOperationsKey) as? Bool ?? false
         }
         set {
-            objc_setAssociatedObject(self, &tableShouldPerformUIOperationsKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &tableShouldPreventUIOperationsKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }
