@@ -85,7 +85,7 @@ extension UIPanGestureRecognizer {
 private var tableShouldPreventUIOperationsKey: Void?
 
 public extension UITableView {
-    public var shouldPreventUIOperations: Bool {
+    var shouldPreventUIOperations: Bool {
         get {
             return objc_getAssociatedObject(self, &tableShouldPreventUIOperationsKey) as? Bool ?? false
         }
